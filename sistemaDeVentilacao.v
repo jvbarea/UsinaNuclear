@@ -1,7 +1,7 @@
 module sistemaDeVentilacao(sensPresSC, sensPresS1, sensPresS2, sensPresS3, sensPresTubSR, sensPresTubSS, sensPresRea, alarmeSonoroVentilacao, damperS12, damperS23, damperS3SS, damperS3SR, damperSSSC, damperRSR);
     input[3:0] sensPresSC, sensPresS1, sensPresS2, sensPresS3, sensPresTubSR, sensPresTubSS, sensPresRea;
     output reg alarmeSonoroVentilacao, damperS12, damperS23, damperS3SS, damperS3SR, damperSSSC, damperRSR;
-    alarmeSonoroVentilacao = damperS12 = damperS23 = damperS3SS = damperS3SR = damperSSSC = damperRSR = 0;
+    alarmeSonoroVentilacao = damperS12 = damperS23 = damperS3SS = damperS3SR = damperSSSC = damperRSR = 1'b0;
     always @(*)
         begin
             if((sensPresRea > 4'b0111)&&(sensPresTubSR > 4'b0111) && (sensPresRea < sensPresTubSR))

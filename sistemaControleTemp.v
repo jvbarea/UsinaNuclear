@@ -1,7 +1,7 @@
 module sistemaDeContoleDeTemperatura(sensTempSC, sensTempS1, sensTempS2, sensTempS3, sensTempTubSR, sensTempTubSS, sensTempRea, alarmeSonoroTemperatura);
     input [7:0] sensTempSC, sensTempS1, sensTempS2, sensTempS3, sensTempTubSR, sensTempTubSS;
     input [8:0] sensTempRea;
-    output alarmeSonoroTemperatura;
+    output reg alarmeSonoroTemperatura;
     
     always @ (*)
         begin
