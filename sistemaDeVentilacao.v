@@ -10,6 +10,7 @@ module sistemaDeVentilacao(sensPresSC, sensPresS1, sensPresS2, sensPresS3, sensP
             damperS3SR = 1'b0;
             damperSSSC = 1'b0;
             damperRSR = 1'b0;
+            //Obs todas as pressões estao em complemento de 2
             if((sensPresRea > 4'b0111)&&(sensPresTubSR > 4'b0111) && (sensPresRea < sensPresTubSR))
                 begin damperRSR=1'b1; end
             else if((sensPresRea <= 4'b0111)||(sensPresTubSR <= 4'b0111))
