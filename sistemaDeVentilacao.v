@@ -1,6 +1,6 @@
 module sistemaDeVentilacao(sensPresSC, sensPresS1, sensPresS2, sensPresS3, sensPresTubSR, sensPresTubSS, sensPresRea, alarmeSonoroVentilacao, damperS12, damperS23, damperS3SS, damperS3SR, damperSSSC, damperRSR);
     input[3:0] sensPresSC, sensPresS1, sensPresS2, sensPresS3, sensPresTubSR, sensPresTubSS, sensPresRea;
-    output alarmeSonoroVentilacao, damperS12, damperS23, damperS3SS, damperS3SR, damperSSSC, damperRSR;
+    output reg alarmeSonoroVentilacao, damperS12, damperS23, damperS3SS, damperS3SR, damperSSSC, damperRSR;
     alarmeSonoroVentilacao = damperS12 = damperS23 = damperS3SS = damperS3SR = damperSSSC = damperRSR = 0;
     always @(*)
         begin
