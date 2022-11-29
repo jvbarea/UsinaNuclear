@@ -1,14 +1,14 @@
 `timescale 1 ns / 100 ps
 module testbench () ;
-    reg [7:0] tempSC, tempS1, tempS2, tempS3, tempTubSR, tempTubSS;
-    reg [8:0] tempRea;
-    wire alarme;
-    integer i , errors;
+reg [7:0] tempSC, tempS1, tempS2, tempS3, tempTubSR, tempTubSS;
+reg [8:0] tempRea;
+wire alarme;
+integer i , errors;
 
 task Check;
 input xpect;
     if ( alarme !== xpect ) begin
-        $display (" Error : (temp = %3d, pressao = %d, rad = %5d), expect %b, got %b", tempA, pressaoA, radiacaoA, xpect , alarme );
+        $display (" Error : expect %b, got %b", xpect , alarme );
         errors = errors + 1;
 end
 endtask
