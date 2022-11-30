@@ -1,6 +1,6 @@
-module SMReator ( CLOCK, S, sistemaRefrigeracao, portasDeConccreto, alarmeSonoroReator);
-    input CLOCk, S;
-    output reg sistemaRefrigeracao, alarmeSonoroReator;
+module SMReator ( CLOCK, S, sistemaRefrigeracao, portasDeConcreto, alarmeSonoroReator);
+    input CLOCK, S;
+    output reg sistemaRefrigeracao, portasDeConcreto, alarmeSonoroReator;
     reg [2:0] Sreg, Snext;
 
     parameter [2:0] S0 = 3'b000,
@@ -12,7 +12,7 @@ module SMReator ( CLOCK, S, sistemaRefrigeracao, portasDeConccreto, alarmeSonoro
         Sreg <=Snext;
     end
 
-    always @(S, B, Sreg) begin
+    always @(S, Sreg) begin
         case (Sreg)
             S0: if(S==0) Snext = S0;
                 else     Snext = S1;
