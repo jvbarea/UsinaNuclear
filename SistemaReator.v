@@ -8,6 +8,7 @@ module SMReator ( CLOCK, S, sistemaRefrigeracao, portasDeConcreto, alarmeSonoroR
                     S2 = 3'b010,
                     S3 = 3'b011,
                     S4 = 3'b100;
+
     always @(posedge CLOCK) begin
         Sreg <=Snext;
     end
