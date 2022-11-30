@@ -4,7 +4,7 @@ reg [3:0] presSC, presS1, presS2, presS3, presTubSR, presTubSS, presRea;
 wire alarme, damperS12A, damperS23A, damperS3SSA, damperS3SRA, damperSSSCA, damperRSRA;
 integer i, errors;
 
-task Check;
+task CheckAlarm;
 input xpect;
     if ( alarme !== xpect ) begin
         $display (" Error : expect %b, got %b", xpect , alarme );
@@ -16,6 +16,11 @@ sistemaDeVentilacao UUT ( .sensPresSC(presSC), .sensPresS1(presS1), .sensPresS2(
 
 initial
 begin
-    
+    presRea = -1;
+    presTubSR = -2;
+    $write("DumberS12: %2d Ativado? ", damperS12A);
+    if (damperS12A==1) $display ("Sim");
+    else if (damperS12A==0) $display("Nao");
+    else $display("Not sure");
 end
 endmodule
