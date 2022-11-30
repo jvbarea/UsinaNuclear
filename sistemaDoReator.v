@@ -3,7 +3,7 @@ module SMReator ( CLOCK, S, sistemaRefrigeracao, portasDeConcreto, alarmeSonoroR
     output reg sistemaRefrigeracao, portasDeConcreto, alarmeSonoroReator;
     reg [2:0] Sreg, Snext;
 
-    parameter [2:0] S0 = 3'b000,7
+    parameter [2:0] S0 = 3'b000,
                     S1 = 3'b001,
                     S2 = 3'b010,
                     S3 = 3'b011,
