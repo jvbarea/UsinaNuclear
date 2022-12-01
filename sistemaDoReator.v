@@ -1,3 +1,35 @@
+module sistemaDoReator (reset, CLOCK, tempRea, inTemp1, inTemp2, inTemp3, inTemp4, outTemp1, outTemp2, outTemp3, outTemp4, portasDeConcreto, sistemaDeVentilacao, alarmeSonoroReator);
+    input reset, CLOCK;
+    input [8:0] tempRea, inTemp1, inTemp2, inTemp3, inTemp4;
+    output [8:0] outTemp1, outTemp2, outTemp3, outTemp4;
+    reg [8:0] outTemp1, outTemp2, outTemp3, outTemp4; 
+    output reg portasDeConcreto, sistemaDeVentilacao, alarmeSonoroReator;
+    parameter [2:0] S;
+
+    always @(posedge CLOCK)
+        memoria4x9b memoria(reset, CLOCK, tempRea, inTemp1, inTemp2, inTemp3, inTemp4, outTemp1, outTemp2, outTemp3, outTemp4);
+        //media das quatro temperaturas(dividir por 2 == shiftDireita >> 2)
+        if((outTemp1 >> 2)+(outTemp2 >> 2)+(outTemp3 >> 2)+(outTemp4 >> 2) >= 300)
+            S <= 1'b1;
+        else
+            S <= 1'b0;    
+        SMReator AMS ( CLOCK, S, sistemaRefrigeracao, portasDeConcreto, alarmeSonoroReator);
+endmodule
+
+module memoria4x9b (reset, CLOCK, d0, d1, d2, d3, q1, q2, q3, q4);
+    input reset, CLOCK;
+    input [8:0] d0;
+    reg [8:0] q1, q2, q3, q4;
+
+    always @(posedge CLOCK or posedge reset)
+        if(reset == 1)
+            begin q1 = 0; q1 = 1; q2 = 0; q3 = 0 end
+        q4 <= q3;
+        q3 <= q2;
+        q2 <= q1;
+        q1 <= d0;
+endmodule    
+
 module SMReator ( CLOCK, S, sistemaRefrigeracao, portasDeConcreto, alarmeSonoroReator);
     input CLOCK, S;
     output reg sistemaRefrigeracao, portasDeConcreto, alarmeSonoroReator;
